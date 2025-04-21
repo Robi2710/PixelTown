@@ -19,9 +19,9 @@ Buildings& Buildings::operator=(const Buildings& other) {
 
 Buildings::~Buildings() {}
 
-int Buildings::maintenance() const {
+/*int Buildings::maintenance() const {
     return (capacity * 5) + (costMoney / 10);
-}
+}*/
 
 const std::string& Buildings::getType() const {
     return type;
