@@ -2,6 +2,7 @@
 #define CITY_H
 
 #include <iostream>
+#include <vector>
 #include "Buildings.h"
 #include "Resources.h"
 
