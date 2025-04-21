@@ -40,8 +40,8 @@ int Buildings::getcostMaterials() const {
 }
 
 void Buildings::showMaintenance() const {
-    int maintenance = (capacity * 5) + (costMoney / 10);
-    std::cout << "Maintenance for " << type << ": " << maintenance << "$ per month" << std::endl;
+    int var_maintenance = (capacity * 5) + (costMoney / 10);
+    std::cout << "Maintenance for " << type << ": " << var_maintenance << "$ per month" << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& os, const Buildings& building) {
