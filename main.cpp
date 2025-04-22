@@ -1,13 +1,16 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <SFML/Graphics.hpp>
 
 #include "Classes/Buildings.h"
 #include "Classes/Resources.h"
 #include "Classes/City.h"
-
+#include "Classes/UI.h"
+#include "Classes/Map.h"
+#include "Classes/TileType.h"
 int main() {
-    std::string cityName;
+    /*std::string cityName;
     std::cout<<"Introduce your city name: ";
     std::getline(std::cin,cityName);
     City myCity(cityName);
@@ -85,6 +88,36 @@ int main() {
             default:
                 std::cout<<"Invalid choice"<<std::endl;
                 }
+            }*/
+    sf::RenderWindow window(sf::VideoMode(800,600), "PixelTown");
+    UI ui;
+    Map map;
+    Resources rm(1000, 500);
+    ui.initialize();
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
             }
-            return 0;
+            if (event.type == sf::Event::MouseButtonPressed &&
+                event.mouseButton.button == sf::Mouse::Left) {
+                float x = event.mouseButton.x;
+                float y = event.mouseButton.y;
+                if (y >= 10 && y <= 60 && x >= 10 && x <= 220) {
+                    ui.handleMouseClick(x, y);
+                }
+                else {
+                    // When clicking on a tile, use the currently selected tile type.
+                    map.handleClick(x, y, ui.getSelectedTileType());
+                }
+                }
         }
+        ui.update(window,rm.getMoney(), rm.getMaterials());
+        window.clear();
+        map.render(window);
+        ui.render(window);
+        window.display();
+    }
+    return 0;
+}

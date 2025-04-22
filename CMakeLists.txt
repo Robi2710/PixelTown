@@ -61,6 +61,10 @@ add_executable(${MAIN_EXECUTABLE_NAME}
     Classes/Buildings.cpp
     Classes/Resources.cpp
     Classes/City.cpp
+    Classes/UI.cpp
+    Classes/Map.cpp
+    Classes/Tile.cpp
+    Classes/TileType.cpp
     generated/src/Helper.cpp
 )
 
