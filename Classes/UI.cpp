@@ -1,4 +1,7 @@
 #include "UI.h"
+#include "Buildings.h"
+#include "Factory.h"
+#include "City.h"
 #include <iostream>
 UI::UI() {
     font.loadFromFile("../assets/fonts/PixelifySans-Regular.ttf");
@@ -47,7 +50,6 @@ void UI::initialize() {
 void UI::handleMouseClick(int mouseX, int mouseY) {
     if (mouseX >= 10 && mouseX <= 110 && mouseY >= 10 && mouseY <= 60) {
         selectedTileType = TileType::Factory;
-        //std::cout << "Factory button clicked" << std::endl;
     } else if (mouseX >= 120 && mouseX <= 220 && mouseY >= 10 && mouseY <= 60) {
         selectedTileType = TileType::House;
         //std::cout << "House button clicked" << std::endl;
@@ -56,4 +58,46 @@ void UI::handleMouseClick(int mouseX, int mouseY) {
 
 TileType UI::getSelectedTileType() {
     return selectedTileType;
+}
+
+std::string UI::getCityName() {
+    sf::RenderWindow inputWindow(sf::VideoMode(800,600), "Enter city name");
+    sf::Font font;
+    font.loadFromFile("../assets/fonts/PixelifySans-Regular.ttf");
+
+    sf::Text prompt("Enter City Name: ", font, 30);
+    prompt.setFillColor(sf::Color::White);
+    prompt.setPosition(20, 20);
+
+    sf::Text cityText("", font, 30);
+    cityText.setFillColor(sf::Color::White);
+    cityText.setPosition(20, 80);
+
+    std::string cityName;
+    while (inputWindow.isOpen()) {
+        sf::Event event;
+        while (inputWindow.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                inputWindow.close();
+                return "";
+            }
+            if (event.type == sf::Event::TextEntered) {
+                if (event.text.unicode == '\r' || event.text.unicode == '\n') {
+                    inputWindow.close();
+                } else if (event.text.unicode == 8) { // Backspace
+                    if (!cityName.empty()) {
+                        cityName.pop_back();
+                    }
+                } else if (event.text.unicode < 128) {
+                    cityName.push_back(static_cast<char>(event.text.unicode));
+                }
+                cityText.setString(cityName);
+            }
+        }
+        inputWindow.clear(sf::Color::Black);
+        inputWindow.draw(prompt);
+        inputWindow.draw(cityText);
+        inputWindow.display();
+    }
+    return cityName;
 }

@@ -2,9 +2,8 @@
 #define UI_H
 
 #include <SFML/Graphics.hpp>
-#include <string>
 #include "TileType.h"
-
+#include "City.h"
 class UI {
 private:
   sf::Font font;
@@ -18,7 +17,7 @@ public:
     void initialize();
     void handleMouseClick(int mouseX, int mouseY);
     TileType getSelectedTileType();
-
+    std::string getCityName();
 };
 
 

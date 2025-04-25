@@ -1,7 +1,6 @@
 #ifndef FACTORY_H
 #define FACTORY_H
 #include "Buildings.h"
-#include <iostream>
 #include <string>
 
 class Factory : public Buildings {

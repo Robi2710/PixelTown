@@ -1,5 +1,7 @@
 #include "Map.h"
-
+#include "Buildings.h"
+#include "Factory.h"
+#include "City.h"
 Map::Map() {
     for (int i = 0; i < rows; ++i) {
         std::vector<Tile> row;
@@ -18,7 +20,7 @@ void Map::render(sf::RenderWindow& window) {
    }
 }
 
-void Map::handleClick(float x, float y, TileType selectedTileType) {
+void Map::handleClick(float x, float y, TileType selectedTileType, City* city) {
     int row = static_cast<int>(y / tileSize);
     int col = static_cast<int>(x / tileSize);
 
@@ -26,6 +28,15 @@ void Map::handleClick(float x, float y, TileType selectedTileType) {
       TileType current = grid[row][col].getType();
       if (current == TileType::Empty) {
         grid[row][col].setType(selectedTileType);
+        if (selectedTileType == TileType::Factory) {
+            Buildings* newBuilding = new Factory("factory", 100, 200, 100, "product", 10);
+            if (city->addBuilding(newBuilding)) {
+                grid[row][col].setType(selectedTileType);
+                std::cout<<"A factory was built";
+            }
+        } else if (selectedTileType == TileType::House) {
+            std::cout << "House built at (" << row << ", " << col << ")" << std::endl;
+        }
       }
     }
 }

@@ -89,10 +89,17 @@ int main() {
                 std::cout<<"Invalid choice"<<std::endl;
                 }
             }*/
-    sf::RenderWindow window(sf::VideoMode(800,600), "PixelTown");
     UI ui;
-    Map map;
+    std::string name = ui.getCityName();
+    if(name.empty()){
+        std::cout << "No city name provided. Exiting." << std::endl;
+        return 0;
+    }
+
     Resources rm(1000, 500);
+    City myCity(name, 0, rm);
+    sf::RenderWindow window(sf::VideoMode(800,600), "PixelTown");
+    Map map;
     ui.initialize();
     while (window.isOpen()) {
         sf::Event event;
@@ -108,12 +115,11 @@ int main() {
                     ui.handleMouseClick(x, y);
                 }
                 else {
-                    // When clicking on a tile, use the currently selected tile type.
-                    map.handleClick(x, y, ui.getSelectedTileType());
+                    map.handleClick(x, y, ui.getSelectedTileType(), &myCity);
                 }
                 }
         }
-        ui.update(window,rm.getMoney(), rm.getMaterials());
+        ui.update(window,myCity.getResources().getMoney(), myCity.getResources().getMaterials());
         window.clear();
         map.render(window);
         ui.render(window);

@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "Tile.h"
 #include "TileType.h"
+#include "City.h"
 
 class Map {
 private:
@@ -15,7 +16,7 @@ private:
 public:
   Map();
   void render(sf::RenderWindow& window);
-  void handleClick(float x, float y, TileType selectedTileType);
+  void handleClick(float x, float y, TileType selectedTileType,City* city);
 };
 
 

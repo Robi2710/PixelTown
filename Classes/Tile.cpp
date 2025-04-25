@@ -1,5 +1,7 @@
 #include "Tile.h"
-
+#include "Buildings.h"
+#include "Factory.h"
+#include "City.h"
 Tile::Tile(float x, float y, float size) {
     type = TileType::Empty;
     shape.setSize(sf::Vector2f(size - 1, size - 1));
@@ -14,7 +16,15 @@ void Tile::setType(TileType newType) {
             shape.setFillColor(sf::Color::White);
             break;
         case TileType::Factory:
-            shape.setFillColor(sf::Color::Red);
+            static sf::Texture factoryTexture;
+            static bool loaded = false;
+            if (!loaded) {
+                if (!factoryTexture.loadFromFile("../assets/textures/factoryTexture2.png")) {
+                    std::cerr << "Failed to load factory image" << std::endl;
+                }
+                loaded = true;
+            }
+            shape.setTexture(&factoryTexture);
             break;
         case TileType::House:
             shape.setFillColor(sf::Color::Blue);

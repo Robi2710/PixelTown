@@ -65,6 +65,7 @@ add_executable(${MAIN_EXECUTABLE_NAME}
     Classes/Map.cpp
     Classes/Tile.cpp
     Classes/TileType.cpp
+    Classes/Factory.cpp
     generated/src/Helper.cpp
 )
 
