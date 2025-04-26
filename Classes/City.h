@@ -30,6 +30,8 @@ public:
 
     void displayCityInfo() const;
 
+    void updateFactoriesHouse();
+
     friend std::ostream& operator<<(std::ostream& os, const City& city);
 };
 

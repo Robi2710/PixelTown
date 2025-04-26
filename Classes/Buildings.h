@@ -16,7 +16,7 @@ public:
     Buildings(const std::string& type, int capacity, int costMoney, int costMaterials);
     Buildings(const Buildings& other);
     Buildings& operator=(const Buildings& other);
-    ~Buildings();
+    virtual ~Buildings();
 
     const std::string& getType() const;
     int getCapacity() const;

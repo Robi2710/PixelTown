@@ -1,5 +1,7 @@
 #include "City.h"
 
+#include "Factory.h"
+#include "House.h"
 int City::totalMaintenance() const {
     int total = 0;
     for (const auto* const building : buildings) {
@@ -65,6 +67,18 @@ void City::displayCityInfo() const {
     std::cout << "Resources: " << resources << std::endl;
     std::cout << "Number of buildings: " << buildings.size() << std::endl;
     std::cout << "Total monthly maintenance: " << totalMaintenance() << "$" << std::endl;
+}
+
+void City::updateFactoriesHouse() {
+    for (Buildings* building : buildings) {
+        if (Factory* factory = dynamic_cast<Factory*>(building)) {
+            factory->generateMaterials(resources);
+        }
+        if (House* house = dynamic_cast<House*>(building)) {
+            house->payMaintenance(resources);
+        }
+
+    }
 }
 
 std::ostream& operator<<(std::ostream& os, const City& city) {

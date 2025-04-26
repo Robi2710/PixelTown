@@ -2,6 +2,7 @@
 #include "Buildings.h"
 #include "Factory.h"
 #include "City.h"
+
 Tile::Tile(float x, float y, float size) {
     type = TileType::Empty;
     shape.setSize(sf::Vector2f(size - 1, size - 1));
@@ -17,17 +18,25 @@ void Tile::setType(TileType newType) {
             break;
         case TileType::Factory:
             static sf::Texture factoryTexture;
-            static bool loaded = false;
-            if (!loaded) {
+            static bool factoryLoaded = false;
+            if (!factoryLoaded) {
                 if (!factoryTexture.loadFromFile("../assets/textures/factoryTexture2.png")) {
                     std::cerr << "Failed to load factory image" << std::endl;
                 }
-                loaded = true;
+                factoryLoaded = true;
             }
             shape.setTexture(&factoryTexture);
             break;
         case TileType::House:
-            shape.setFillColor(sf::Color::Blue);
+            static sf::Texture houseTexture;
+            static bool houseLoaded = false;
+            if (!houseLoaded) {
+                if (!houseTexture.loadFromFile("../assets/textures/houseTexture.png")) {
+                    std::cerr << "Failed to load factory image" << std::endl;
+                }
+                houseLoaded = true;
+            }
+            shape.setTexture(&houseTexture);
             break;
     }
 }

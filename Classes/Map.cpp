@@ -2,6 +2,7 @@
 #include "Buildings.h"
 #include "Factory.h"
 #include "City.h"
+#include "House.h"
 Map::Map() {
     for (int i = 0; i < rows; ++i) {
         std::vector<Tile> row;
@@ -27,15 +28,18 @@ void Map::handleClick(float x, float y, TileType selectedTileType, City* city) {
     if (row >= 0 && row < rows && col >= 0 && col < cols) {
       TileType current = grid[row][col].getType();
       if (current == TileType::Empty) {
-        grid[row][col].setType(selectedTileType);
         if (selectedTileType == TileType::Factory) {
-            Buildings* newBuilding = new Factory("factory", 100, 200, 100, "product", 10);
+            Buildings* newBuilding = new Factory("factory", 100, 200, 100, "product", 10,50, 30);
             if (city->addBuilding(newBuilding)) {
                 grid[row][col].setType(selectedTileType);
                 std::cout<<"A factory was built";
             }
         } else if (selectedTileType == TileType::House) {
-            std::cout << "House built at (" << row << ", " << col << ")" << std::endl;
+            Buildings* newBuilding = new House("house", 10, 100, 50, 20);
+            if (city->addBuilding(newBuilding)) {
+                grid[row][col].setType(selectedTileType);
+                std::cout<<"A house was built";
+            }
         }
       }
     }

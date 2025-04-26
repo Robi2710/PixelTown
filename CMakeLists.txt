@@ -66,6 +66,7 @@ add_executable(${MAIN_EXECUTABLE_NAME}
     Classes/Tile.cpp
     Classes/TileType.cpp
     Classes/Factory.cpp
+    Classes/House.cpp
     generated/src/Helper.cpp
 )
 

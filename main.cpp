@@ -9,6 +9,7 @@
 #include "Classes/UI.h"
 #include "Classes/Map.h"
 #include "Classes/TileType.h"
+#include "Classes/House.h"
 int main() {
     /*std::string cityName;
     std::cout<<"Introduce your city name: ";
@@ -98,7 +99,7 @@ int main() {
 
     Resources rm(1000, 500);
     City myCity(name, 0, rm);
-    sf::RenderWindow window(sf::VideoMode(800,600), "PixelTown");
+    sf::RenderWindow window(sf::VideoMode(800,600), name);
     Map map;
     ui.initialize();
     while (window.isOpen()) {
@@ -119,6 +120,7 @@ int main() {
                 }
                 }
         }
+        myCity.updateFactoriesHouse();
         ui.update(window,myCity.getResources().getMoney(), myCity.getResources().getMaterials());
         window.clear();
         map.render(window);
