@@ -49,3 +49,4 @@ std::ostream& operator<<(std::ostream& os, const Buildings& building) {
        << ", Cost: " << building.costMoney << "$ and " << building.costMaterials << " materials";
     return os;
 }
+

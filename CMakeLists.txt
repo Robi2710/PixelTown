@@ -67,6 +67,8 @@ add_executable(${MAIN_EXECUTABLE_NAME}
     Classes/TileType.cpp
     Classes/Factory.cpp
     Classes/House.cpp
+    Classes/Road.cpp
+    Classes/Exceptions.cpp
     generated/src/Helper.cpp
 )
 

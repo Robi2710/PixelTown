@@ -2,6 +2,7 @@
 #include "Buildings.h"
 #include "Factory.h"
 #include "City.h"
+#include "Exceptions.h"
 
 Tile::Tile(float x, float y, float size) {
     type = TileType::Empty;
@@ -21,7 +22,7 @@ void Tile::setType(TileType newType) {
             static bool factoryLoaded = false;
             if (!factoryLoaded) {
                 if (!factoryTexture.loadFromFile("../assets/textures/factoryTexture2.png")) {
-                    std::cerr << "Failed to load factory image" << std::endl;
+                    throw textureError("../assets/textures/factoryTexture2.png");
                 }
                 factoryLoaded = true;
             }
@@ -32,11 +33,22 @@ void Tile::setType(TileType newType) {
             static bool houseLoaded = false;
             if (!houseLoaded) {
                 if (!houseTexture.loadFromFile("../assets/textures/houseTexture.png")) {
-                    std::cerr << "Failed to load factory image" << std::endl;
+                    throw textureError("../assets/textures/houseTexture.png");
                 }
                 houseLoaded = true;
             }
             shape.setTexture(&houseTexture);
+            break;
+        case TileType::Road:
+            static sf::Texture roadTexture;
+            static bool roadLoaded = false;
+            if (!roadLoaded) {
+                if (!roadTexture.loadFromFile("../assets/textures/roadTexture.png")) {
+                    throw textureError("../assets/textures/roadTexture.png");
+                }
+                roadLoaded = true;
+            }
+            shape.setTexture(&roadTexture);
             break;
     }
 }

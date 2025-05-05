@@ -18,8 +18,9 @@ public:
     Buildings& operator=(const Buildings& other);
     virtual ~Buildings();
 
-    const std::string& getType() const;
-    int getCapacity() const;
+    //virtual int calculateMaintenance() const = 0;
+    virtual const std::string& getType() const;
+    virtual int getCapacity() const;
     int getcostMoney() const;
     int getcostMaterials() const;
     void showMaintenance() const;

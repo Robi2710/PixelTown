@@ -1,10 +1,12 @@
 #include "UI.h"
-#include "Buildings.h"
 #include "Factory.h"
 #include "City.h"
 #include <iostream>
+#include "Exceptions.h"
 UI::UI() {
-    font.loadFromFile("../assets/fonts/PixelifySans-Regular.ttf");
+    if (!font.loadFromFile("../assets/fonts/PixelifySans-Regular.ttf")) {
+        throw fontError("../assets/fonts/PixelifySans-Regular.ttf");
+    }
 
     moneyText.setFont(font);
     moneyText.setCharacterSize(24);
@@ -43,8 +45,13 @@ void UI::initialize() {
     houseButton.setPosition(120, 10);
     houseButton.setFillColor(sf::Color::Blue);
 
+    sf::RectangleShape roadButton(sf::Vector2f(100,50));
+    roadButton.setPosition(230, 10);
+    roadButton.setFillColor(sf::Color::Green);
+
     buttons.push_back(factoryButton);
     buttons.push_back(houseButton);
+    buttons.push_back(roadButton);
 }
 
 void UI::handleMouseClick(int mouseX, int mouseY) {
@@ -53,6 +60,9 @@ void UI::handleMouseClick(int mouseX, int mouseY) {
     } else if (mouseX >= 120 && mouseX <= 220 && mouseY >= 10 && mouseY <= 60) {
         selectedTileType = TileType::House;
         //std::cout << "House button clicked" << std::endl;
+    }
+    else if (mouseX >= 230 && mouseX <= 330 && mouseY >= 10 && mouseY <= 60) {
+        selectedTileType = TileType::Road;
     }
 }
 
@@ -63,7 +73,9 @@ TileType UI::getSelectedTileType() {
 std::string UI::getCityName() {
     sf::RenderWindow inputWindow(sf::VideoMode(800,600), "Enter city name");
     sf::Font font;
-    font.loadFromFile("../assets/fonts/PixelifySans-Regular.ttf");
+    if (!font.loadFromFile("../assets/fonts/PixelifySans-Regular.ttf")) {
+        throw fontError("../assets/fonts/PixelifySans-Regular.ttf");
+    }
 
     sf::Text prompt("Enter City Name: ", font, 30);
     prompt.setFillColor(sf::Color::White);
@@ -79,7 +91,7 @@ std::string UI::getCityName() {
         while (inputWindow.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 inputWindow.close();
-                return "";
+                throw windowClosed();
             }
             if (event.type == sf::Event::TextEntered) {
                 if (event.text.unicode == '\r' || event.text.unicode == '\n') {

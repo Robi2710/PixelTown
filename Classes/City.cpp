@@ -1,7 +1,8 @@
 #include "City.h"
-
+#include "Exceptions.h""
 #include "Factory.h"
 #include "House.h"
+#include "Road.h"
 int City::totalMaintenance() const {
     int total = 0;
     for (const auto* const building : buildings) {
@@ -48,6 +49,7 @@ bool City::addBuilding(Buildings* building) {
 
     buildings.push_back(building);
 
+
     if (building->getType() == "house") {
         population += building->getCapacity();
         std::cout<<"Population increased by "<<building->getCapacity()<<" people"<<std::endl;
@@ -57,6 +59,9 @@ bool City::addBuilding(Buildings* building) {
         std::cout<<"A factory was built"<<std::endl;
     }
 
+    if (building->getType() == "road") {
+        std::cout<<"A road was built"<<std::endl;
+    }
     checkCityStatus();
     return true;
 }

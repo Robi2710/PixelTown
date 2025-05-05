@@ -17,7 +17,7 @@ public:
     void initialize();
     void handleMouseClick(int mouseX, int mouseY);
     TileType getSelectedTileType();
-    std::string getCityName();
+    static std::string getCityName();
 };
 
 

@@ -3,6 +3,8 @@
 #include "Factory.h"
 #include "City.h"
 #include "House.h"
+#include "Road.h"
+
 Map::Map() {
     for (int i = 0; i < rows; ++i) {
         std::vector<Tile> row;
@@ -39,6 +41,12 @@ void Map::handleClick(float x, float y, TileType selectedTileType, City* city) {
             if (city->addBuilding(newBuilding)) {
                 grid[row][col].setType(selectedTileType);
                 std::cout<<"A house was built";
+            }
+        } else if (selectedTileType == TileType::Road) {
+            Buildings* newBuilding = new Road("road", 0, 50, 25);
+            if (city->addBuilding(newBuilding)) {
+                grid[row][col].setType(selectedTileType);
+                std::cout<<"A road was built";
             }
         }
       }
