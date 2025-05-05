@@ -3,6 +3,7 @@
 #include "Buildings.h"
 #include <string>
 #include "Resources.h"
+#include <chrono>
 class Factory : public Buildings {
 private:
    std::string product;
