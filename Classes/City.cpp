@@ -3,13 +3,13 @@
 #include "Factory.h"
 #include "House.h"
 #include "Road.h"
-int City::totalMaintenance() const {
+/*int City::totalMaintenance() const {
     int total = 0;
     for (const auto* const building : buildings) {
         total += (building->getCapacity() * 5) + (building->getcostMoney() / 10);
     }
     return total;
-}
+}*/
 
 void City::checkCityStatus() const {
     if (population == 0) {

@@ -8,9 +8,8 @@ Factory::Factory(const std::string& type, int capacity, int costMoney, int costM
       product(product),
       productionRate(productionRate),
       materialGenerationRate(materialGenerationRate),
-      generationInterval(GenerationInterval) {
-    lastProductionTime = std::chrono::system_clock::now();
-}
+      generationInterval(GenerationInterval) ,
+    lastProductionTime(std::chrono::system_clock::now()) {}
 
 void Factory::updateBuilding(Resources& resources) {
     auto currentTime = std::chrono::system_clock::now();

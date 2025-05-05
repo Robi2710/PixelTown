@@ -16,6 +16,7 @@ Tile::Tile(float x, float y, float size) {
 void Tile::setType(TileType newType) {
     type = newType;
     switch (type) {
+
         case TileType::Empty:
             static sf::Texture emptyTexture;
             static bool emptyLoaded = false;
