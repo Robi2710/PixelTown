@@ -36,9 +36,9 @@ Resources& City::getResources() {
     return resources;
 }
 
-const std::vector<Buildings*>& City::getBuildings() const {
+/*const std::vector<Buildings*>& City::getBuildings() const {
     return buildings;
-}
+}*/
 
 bool City::addBuilding(Buildings* building) {
     if (!resources.consumeResources(building->getcostMoney(),building->getcostMaterials())) {
@@ -64,14 +64,6 @@ bool City::addBuilding(Buildings* building) {
     }
     checkCityStatus();
     return true;
-}
-
-void City::displayCityInfo() const {
-    std::cout << "=== Town " << name << " ===" << std::endl;
-    std::cout << "Population: " << population << std::endl;
-    std::cout << "Resources: " << resources << std::endl;
-    std::cout << "Number of buildings: " << buildings.size() << std::endl;
-    std::cout << "Total monthly maintenance: " << totalMaintenance() << "$" << std::endl;
 }
 
 void City::updateFactoriesHouse() {

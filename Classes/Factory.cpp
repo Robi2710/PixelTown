@@ -27,10 +27,10 @@ void Factory::updateBuilding(Resources& resources) {
     return productionRate;
 }*/
 
-void Factory::showProductionInfo() const {
+/*void Factory::showProductionInfo() const {
     std::cout << "Factory Type: " << getType() << ", Producing: " << product
               << ", Production Rate: " << productionRate << " units/month" << std::endl;
-}
+}*/
 
 [[maybe_unused]] Buildings* Factory::clone() const {
     return new Factory(*this);

@@ -28,8 +28,6 @@ public:
 
     bool addBuilding(Buildings* building);
 
-    void displayCityInfo() const;
-
     void updateFactoriesHouse();
 
     friend std::ostream& operator<<(std::ostream& os, const City& city);
