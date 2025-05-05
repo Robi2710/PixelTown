@@ -7,7 +7,7 @@
 #include "Classes/UI.h"
 #include "Classes/Map.h"
 #include "Classes/Exceptions.h"
-
+#include "Classes/Factory.h"
 
 int main() {
     UI ui;
@@ -33,6 +33,9 @@ int main() {
         std::cerr << "Font loading error: " << e.what() << std::endl;
         return 1;
     }
+    Factory f("factory", 100, 200, 100, "product", 10, 50, 30);
+    Buildings* copy = f.clone();
+    delete copy;
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
