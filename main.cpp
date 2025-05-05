@@ -52,7 +52,7 @@ int main() {
                 }
         }
         myCity.updateFactoriesHouse();
-        ui.update(window,myCity.getResources().getMoney(), myCity.getResources().getMaterials());
+        ui.update(myCity.getResources().getMoney(), myCity.getResources().getMaterials());
         window.clear(sf::Color(34, 139, 34));
         map.render(window);
         ui.render(window);

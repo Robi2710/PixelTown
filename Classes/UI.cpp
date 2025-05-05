@@ -19,7 +19,7 @@ UI::UI() {
     materialText.setPosition(10, 500);
 }
 
-void UI::update(sf::RenderWindow& window, int money, int materials) {
+void UI::update( int money, int materials) {
     moneyText.setString("Money: " + std::to_string(money));
     materialText.setString("Materials: " + std::to_string(materials));
 

@@ -21,8 +21,8 @@ public:
     //virtual int calculateMaintenance() const = 0;
     virtual void updateBuilding(Resources& resources) = 0;
     [[nodiscard]] virtual Buildings* clone() const = 0;
-    [[nodiscard]] virtual const std::string& getType() const;
-    [[nodiscard]] virtual int getCapacity() const;
+    [[nodiscard]] const std::string& getType() const;
+    [[nodiscard]] int getCapacity() const;
     [[nodiscard]] int getcostMoney() const;
     [[nodiscard]] int getcostMaterials() const;
     void showMaintenance() const;

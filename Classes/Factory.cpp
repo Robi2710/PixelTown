@@ -22,20 +22,17 @@ void Factory::updateBuilding(Resources& resources) {
         std::cout << "Factory generated " << materialGenerationRate << " materials\n";
     }
 }
-const std::string& Factory::getProduct() const {
-    return product;
-}
 
-int Factory::getProductionRate() const {
+/*int Factory::getProductionRate() const {
     return productionRate;
-}
+}*/
 
 void Factory::showProductionInfo() const {
     std::cout << "Factory Type: " << getType() << ", Producing: " << product
               << ", Production Rate: " << productionRate << " units/month" << std::endl;
 }
 
-Buildings* Factory::clone() const {
+[[maybe_unused]] Buildings* Factory::clone() const {
     return new Factory(*this);
 }
 

@@ -13,7 +13,7 @@ private:
   std::vector<sf::Text> buttonTexts;
 public:
     UI();
-    void update(sf::RenderWindow& window, int money, int materials);
+    void update( int money, int materials);
     void render(sf::RenderWindow& window);
     void initialize();
     void handleMouseClick(int mouseX, int mouseY);

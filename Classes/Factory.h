@@ -15,9 +15,8 @@ public:
              const std::string& product, int productionRate, int materialGenerationRate, int generationInterval);
     void updateBuilding(Resources& resources) override;
     [[nodiscard]] Buildings* clone() const override;
-   [[nodiscard]] const std::string& getProduct() const;
-   [[nodiscard]] int getProductionRate() const;
+   //[[nodiscard]] int getProductionRate() const;
    void showProductionInfo() const;
-    void generateMaterials(Resources& resources);
+    //void generateMaterials(Resources& resources);
 };
 #endif //FACTORY_H
