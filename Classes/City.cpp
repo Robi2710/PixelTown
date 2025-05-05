@@ -77,10 +77,10 @@ void City::displayCityInfo() const {
 void City::updateFactoriesHouse() {
     for (Buildings* building : buildings) {
         if (Factory* factory = dynamic_cast<Factory*>(building)) {
-            factory->generateMaterials(resources);
+            factory->updateBuilding(resources);
         }
         if (House* house = dynamic_cast<House*>(building)) {
-            house->payMaintenance(resources);
+            house->updateBuilding(resources);
         }
 
     }

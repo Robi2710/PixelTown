@@ -10,7 +10,9 @@ private:
 public:
     House(const std::string& type, int capacity, int costMoney, int costMaterials,
           int maintenanceCost);
-    void payMaintenance(Resources& resources);
+    //void payMaintenance(Resources& resources);
+    void updateBuilding(Resources& resources) override;
+    Buildings* clone() const override;
 };
 
 

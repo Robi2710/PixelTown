@@ -12,8 +12,8 @@ class Tile {
 private:
     TileType type;
     sf::RectangleShape shape;
-    static sf::Texture backgroundTexture;
-    static bool textureLoaded;
+    // static sf::Texture backgroundTexture;
+    // static bool textureLoaded;
 public:
     Tile(float x, float y, float size);
     void setType(TileType newType);

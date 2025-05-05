@@ -7,11 +7,23 @@ House::House(const std::string& type, int capacity, int costMoney, int costMater
     lastMaintenaceTime(std::chrono::steady_clock::now())
 {}
 
-void House::payMaintenance(Resources& resources) {
+/*void House::payMaintenance(Resources& resources) {
     auto now = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed = now - lastMaintenaceTime;
     if (elapsed.count() >= 120 ) {
         resources.setMaterials(resources.getMoney() - maintenanceCost);
         lastMaintenaceTime = now;
     }
+}*/
+void House::updateBuilding(Resources& resources) {
+    auto now = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed = now - lastMaintenaceTime;
+    if (elapsed.count() >= 120 ) {
+        resources.setMaterials(resources.getMoney() - maintenanceCost);
+        lastMaintenaceTime = now;
+    }
+}
+
+Buildings* House::clone() const {
+    return new House(*this);
 }

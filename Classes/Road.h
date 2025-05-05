@@ -7,6 +7,9 @@
 class Road : public Buildings {
 public:
     Road(const std::string& type, int capacity, int costMoney, int costMaterials);
+    void updateBuilding(Resources& resources) override;
+    Buildings* clone() const override;
+
 };
 
 

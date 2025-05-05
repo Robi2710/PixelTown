@@ -12,6 +12,16 @@ Factory::Factory(const std::string& type, int capacity, int costMoney, int costM
     lastProductionTime = std::chrono::system_clock::now();
 }
 
+void Factory::updateBuilding(Resources& resources) {
+    auto currentTime = std::chrono::system_clock::now();
+    auto timeDiff = std::chrono::duration_cast<std::chrono::seconds>(currentTime - lastProductionTime);
+
+    if (timeDiff.count() >= generationInterval) {
+        resources.setMaterials(resources.getMaterials() + materialGenerationRate);
+        lastProductionTime = currentTime;
+        std::cout << "Factory generated " << materialGenerationRate << " materials\n";
+    }
+}
 const std::string& Factory::getProduct() const {
     return product;
 }
@@ -25,7 +35,11 @@ void Factory::showProductionInfo() const {
               << ", Production Rate: " << productionRate << " units/month" << std::endl;
 }
 
-void Factory::generateMaterials(Resources& resources) {
+Buildings* Factory::clone() const {
+    return new Factory(*this);
+}
+
+/*void Factory::generateMaterials(Resources& resources) {
     auto currentTime = std::chrono::system_clock::now();
     auto timeDiff = std::chrono::duration_cast<std::chrono::seconds>(currentTime - lastProductionTime);
 
@@ -33,4 +47,4 @@ void Factory::generateMaterials(Resources& resources) {
         resources.setMaterials(resources.getMaterials() + materialGenerationRate);
         lastProductionTime = currentTime;
     }
-}
+}*/
