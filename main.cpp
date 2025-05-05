@@ -43,7 +43,7 @@ int main() {
                 event.mouseButton.button == sf::Mouse::Left) {
                 float x = event.mouseButton.x;
                 float y = event.mouseButton.y;
-                if (y >= 10 && y <= 60 && x >= 10 && x <= 330) {
+                if (y >= 500 && y <= 550 && x >= 200 && x <= 540) {
                     ui.handleMouseClick(x, y);
                 }
                 else {
@@ -53,7 +53,7 @@ int main() {
         }
         myCity.updateFactoriesHouse();
         ui.update(window,myCity.getResources().getMoney(), myCity.getResources().getMaterials());
-        window.clear();
+        window.clear(sf::Color(34, 139, 34));
         map.render(window);
         ui.render(window);
         window.display();

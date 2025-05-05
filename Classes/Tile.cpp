@@ -6,16 +6,26 @@
 
 Tile::Tile(float x, float y, float size) {
     type = TileType::Empty;
-    shape.setSize(sf::Vector2f(size - 1, size - 1));
+    shape.setSize(sf::Vector2f(size , size ));
     shape.setPosition(x, y);
     shape.setFillColor(sf::Color::White);
+    //setType(TileType::Empty);
 }
+
 
 void Tile::setType(TileType newType) {
     type = newType;
     switch (type) {
         case TileType::Empty:
-            shape.setFillColor(sf::Color::White);
+            static sf::Texture emptyTexture;
+            static bool emptyLoaded = false;
+            if (!emptyLoaded) {
+                if (!emptyTexture.loadFromFile("../assets/textures/tileTexture.png")) {
+                    throw textureError("../assets/textures/tileTexture.png");
+                }
+                emptyLoaded = true;
+            }
+            shape.setTexture(&emptyTexture);
             break;
         case TileType::Factory:
             static sf::Texture factoryTexture;

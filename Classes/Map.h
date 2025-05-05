@@ -11,7 +11,7 @@ class Map {
 private:
   std::vector<std::vector<Tile>> grid;
   const int rows = 10;
-  const int cols = 15;
+  const int cols = 16;
   const float tileSize = 50.f;
 public:
   Map();

@@ -32,22 +32,51 @@ void UI::render(sf::RenderWindow& window) {
     for (auto& button : buttons) {
         window.draw(button);
     }
+    for (auto& text : buttonTexts) {
+        window.draw(text);
+    }
+
     window.draw(moneyText);
     window.draw(materialText);
 }
 
 void UI::initialize() {
     sf::RectangleShape factoryButton(sf::Vector2f(100,50));
-    factoryButton.setPosition(10, 10);
-    factoryButton.setFillColor(sf::Color::Red);
+    factoryButton.setPosition(200, 500);
+    factoryButton.setFillColor(sf::Color(218, 160, 109));
 
     sf::RectangleShape houseButton(sf::Vector2f(100,50));
-    houseButton.setPosition(120, 10);
-    houseButton.setFillColor(sf::Color::Blue);
+    houseButton.setPosition(320, 500);
+    houseButton.setFillColor(sf::Color(218, 160, 109));
 
     sf::RectangleShape roadButton(sf::Vector2f(100,50));
-    roadButton.setPosition(230, 10);
-    roadButton.setFillColor(sf::Color::Green);
+    roadButton.setPosition(440, 500);
+    roadButton.setFillColor(sf::Color(218, 160, 109));
+
+    sf::Text factoryText;
+    factoryText.setFont(font);
+    factoryText.setString("Factory");
+    factoryText.setCharacterSize(20);
+    factoryText.setFillColor(sf::Color::Yellow);
+    factoryText.setPosition(210, 500);
+
+    sf::Text houseText;
+    houseText.setFont(font);
+    houseText.setString("House");
+    houseText.setCharacterSize(20);
+    houseText.setFillColor(sf::Color::Yellow);
+    houseText.setPosition(340, 500);
+
+    sf::Text roadText;
+    roadText.setFont(font);
+    roadText.setString("Road");
+    roadText.setCharacterSize(20);
+    roadText.setFillColor(sf::Color::Yellow);
+    roadText.setPosition(465, 500);
+
+    buttonTexts.push_back(factoryText);
+    buttonTexts.push_back(roadText);
+    buttonTexts.push_back(houseText);
 
     buttons.push_back(factoryButton);
     buttons.push_back(houseButton);
@@ -55,13 +84,13 @@ void UI::initialize() {
 }
 
 void UI::handleMouseClick(int mouseX, int mouseY) {
-    if (mouseX >= 10 && mouseX <= 110 && mouseY >= 10 && mouseY <= 60) {
+    if (mouseX >= 200 && mouseX <= 300 && mouseY >= 500 && mouseY <= 550) {
         selectedTileType = TileType::Factory;
-    } else if (mouseX >= 120 && mouseX <= 220 && mouseY >= 10 && mouseY <= 60) {
+    } else if (mouseX >= 320 && mouseX <= 420 && mouseY >= 500 && mouseY <= 550) {
         selectedTileType = TileType::House;
         //std::cout << "House button clicked" << std::endl;
     }
-    else if (mouseX >= 230 && mouseX <= 330 && mouseY >= 10 && mouseY <= 60) {
+    else if (mouseX >= 440 && mouseX <= 540 && mouseY >= 500 && mouseY <= 550) {
         selectedTileType = TileType::Road;
     }
 }

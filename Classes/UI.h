@@ -10,6 +10,7 @@ private:
   sf::Text moneyText, materialText;
   std::vector<sf::RectangleShape> buttons;
   TileType selectedTileType;
+  std::vector<sf::Text> buttonTexts;
 public:
     UI();
     void update(sf::RenderWindow& window, int money, int materials);
