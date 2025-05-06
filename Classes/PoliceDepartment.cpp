@@ -2,7 +2,8 @@
 #include "House.h"
 #include <vector>
 PoliceDepartment::PoliceDepartment(const std::string& type, int capacity, int costMoney, int costMaterials)
-    : Buildings(type, capacity, costMoney, costMaterials) {}
+    : Buildings(type, capacity, costMoney, costMaterials),
+      cityBuildings(nullptr) {}
 
 std::vector<House*> PoliceDepartment::findNearbyHouses() {
     std::vector<House*> nearbyHouses;
