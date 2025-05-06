@@ -5,6 +5,7 @@
 #include "Resources.h"
 #include "House.h"
 #include <vector>
+#include <string>
 
 class PoliceDepartment : public Buildings {
 private:
