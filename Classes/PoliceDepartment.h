@@ -11,7 +11,7 @@ private:
     std::vector<Buildings*>* cityBuildings;
 public:
     PoliceDepartment(const std::string& type, int capacity, int costMoney, int costMaterials);
-    void updateBuilding(Resources& resources) override;
+    void updateBuilding([[maybe_unused]] Resources& resources) override;
     Buildings* clone() const override;
     std::vector<House*> findNearbyHouses();
 
