@@ -3,7 +3,7 @@
 #include "City.h"
 #include <iostream>
 #include "Exceptions.h"
-UI::UI() {
+UI::UI() : selectedTileType(TileType::Empty) {
     if (!font.loadFromFile("../assets/fonts/PixelifySans-Regular.ttf")) {
         throw fontError("../assets/fonts/PixelifySans-Regular.ttf");
     }
