@@ -17,7 +17,7 @@ void Tile::setType(TileType newType) {
     type = newType;
     switch (type) {
 
-        case TileType::Empty:
+        case TileType::Empty: {
             static sf::Texture emptyTexture;
             static bool emptyLoaded = false;
             if (!emptyLoaded) {
@@ -28,7 +28,9 @@ void Tile::setType(TileType newType) {
             }
             shape.setTexture(&emptyTexture);
             break;
-        case TileType::Factory:
+        }
+
+        case TileType::Factory: {
             static sf::Texture factoryTexture;
             static bool factoryLoaded = false;
             if (!factoryLoaded) {
@@ -39,7 +41,9 @@ void Tile::setType(TileType newType) {
             }
             shape.setTexture(&factoryTexture);
             break;
-        case TileType::House:
+        }
+
+        case TileType::House: {
             static sf::Texture houseTexture;
             static bool houseLoaded = false;
             if (!houseLoaded) {
@@ -50,7 +54,9 @@ void Tile::setType(TileType newType) {
             }
             shape.setTexture(&houseTexture);
             break;
-        case TileType::Road:
+        }
+
+        case TileType::Road: {
             static sf::Texture roadTexture;
             static bool roadLoaded = false;
             if (!roadLoaded) {
@@ -61,6 +67,7 @@ void Tile::setType(TileType newType) {
             }
             shape.setTexture(&roadTexture);
             break;
+        }
     }
 }
 
