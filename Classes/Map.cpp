@@ -3,6 +3,7 @@
 #include "Factory.h"
 #include "City.h"
 #include "House.h"
+#include "PoliceDepartment.h"
 #include "Road.h"
 
 Map::Map() {
@@ -48,7 +49,14 @@ void Map::handleClick(float x, float y, TileType selectedTileType, City* city) {
                 grid[row][col].setType(selectedTileType);
                 std::cout<<"A road was built";
             }
+        } else if (selectedTileType == TileType::PoliceDepartment) {
+            Buildings* newBuilding = new PoliceDepartment("policeDepartment", 100, 200, 100);
+            if (city-> addBuilding(newBuilding)) {
+                grid[row][col].setType(selectedTileType);
+                std::cout<<"A police department was built";
+            }
         }
+
       }
     }
 }

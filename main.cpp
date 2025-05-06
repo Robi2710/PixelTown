@@ -46,7 +46,7 @@ int main() {
                 event.mouseButton.button == sf::Mouse::Left) {
                 float x = event.mouseButton.x;
                 float y = event.mouseButton.y;
-                if (y >= 500 && y <= 550 && x >= 200 && x <= 540) {
+                if (y >= 500 && y <= 550 && x >= 200 && x <= 665) {
                     ui.handleMouseClick(x, y);
                 }
                 else {

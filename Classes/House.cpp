@@ -27,3 +27,4 @@ void House::updateBuilding(Resources& resources) {
 Buildings* House::clone() const {
     return new House(*this);
 }
+

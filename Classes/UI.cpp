@@ -53,6 +53,10 @@ void UI::initialize() {
     roadButton.setPosition(440, 500);
     roadButton.setFillColor(sf::Color(218, 160, 109));
 
+    sf::RectangleShape policeButton(sf::Vector2f(100,50));
+    policeButton.setPosition(550, 500);
+    policeButton.setFillColor(sf::Color(218, 160, 109));
+
     sf::Text factoryText;
     factoryText.setFont(font);
     factoryText.setString("Factory");
@@ -74,13 +78,22 @@ void UI::initialize() {
     roadText.setFillColor(sf::Color::Yellow);
     roadText.setPosition(465, 500);
 
+    sf::Text policeText;
+    policeText.setFont(font);
+    policeText.setString("Police");
+    policeText.setCharacterSize(20);
+    policeText.setFillColor(sf::Color::Yellow);
+    policeText.setPosition(565, 500);
+
     buttonTexts.push_back(factoryText);
     buttonTexts.push_back(roadText);
     buttonTexts.push_back(houseText);
+    buttonTexts.push_back(policeText);
 
     buttons.push_back(factoryButton);
     buttons.push_back(houseButton);
     buttons.push_back(roadButton);
+    buttons.push_back(policeButton);
 }
 
 void UI::handleMouseClick(int mouseX, int mouseY) {
@@ -92,6 +105,10 @@ void UI::handleMouseClick(int mouseX, int mouseY) {
     }
     else if (mouseX >= 440 && mouseX <= 540 && mouseY >= 500 && mouseY <= 550) {
         selectedTileType = TileType::Road;
+    }
+
+    else if (mouseX >= 550 && mouseX <= 650 && mouseY >= 500 && mouseY <= 550) {
+        selectedTileType = TileType::PoliceDepartment;
     }
 }
 

@@ -7,7 +7,8 @@ enum class TileType {
     Empty,
     Factory,
     House,
-    Road
+    Road,
+    PoliceDepartment
 };
 
 

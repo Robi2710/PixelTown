@@ -69,6 +69,7 @@ add_executable(${MAIN_EXECUTABLE_NAME}
     Classes/House.cpp
     Classes/Road.cpp
     Classes/Exceptions.cpp
+    Classes/PoliceDepartment.cpp
     generated/src/Helper.cpp
 )
 

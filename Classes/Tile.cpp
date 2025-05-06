@@ -68,6 +68,18 @@ void Tile::setType(TileType newType) {
             shape.setTexture(&roadTexture);
             break;
         }
+        case TileType::PoliceDepartment: {
+            static sf::Texture policeDepartmentTexture;
+            static bool policeDepartmentLoaded = false;
+            if (!policeDepartmentLoaded) {
+                if (!policeDepartmentTexture.loadFromFile("../assets/textures/policeDepartmentTexture.png")) {
+                    throw textureError("../assets/textures/policeDepartmentTexture.png");
+                }
+                policeDepartmentLoaded = true;
+            }
+            shape.setTexture(&policeDepartmentTexture);
+            break;
+        }
     }
 }
 

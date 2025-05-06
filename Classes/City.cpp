@@ -2,6 +2,7 @@
 #include "Exceptions.h"
 #include "Factory.h"
 #include "House.h"
+#include "PoliceDepartment.h"
 #include "Road.h"
 /*int City::totalMaintenance() const {
     int total = 0;
@@ -62,6 +63,7 @@ bool City::addBuilding(Buildings* building) {
     if (building->getType() == "road") {
         std::cout<<"A road was built"<<std::endl;
     }
+
     checkCityStatus();
     return true;
 }
@@ -73,6 +75,9 @@ void City::updateFactoriesHouse() {
         }
         if (House* house = dynamic_cast<House*>(building)) {
             house->updateBuilding(resources);
+        }
+        if (PoliceDepartment* police = dynamic_cast<PoliceDepartment*>(building)) {
+            police->updateBuilding(resources);
         }
 
     }
