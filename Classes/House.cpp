@@ -4,7 +4,8 @@ House::House(const std::string& type, int capacity, int costMoney, int costMater
               int maintenanceCost)
     : Buildings(type, capacity, costMoney, costMaterials),
     maintenanceCost(maintenanceCost),
-    lastMaintenaceTime(std::chrono::steady_clock::now())
+    lastMaintenaceTime(std::chrono::steady_clock::now()),
+    satisfaction(1.0f)
 {}
 
 /*void House::payMaintenance(Resources& resources) {

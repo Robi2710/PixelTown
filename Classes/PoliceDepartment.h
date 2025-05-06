@@ -4,6 +4,8 @@
 #include "Buildings.h"
 #include "Resources.h"
 #include "House.h"
+#include <vector>
+
 class PoliceDepartment : public Buildings {
 private:
     const int radius = 4;
