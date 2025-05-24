@@ -21,8 +21,8 @@ void Tile::setType(TileType newType) {
             static sf::Texture emptyTexture;
             static bool emptyLoaded = false;
             if (!emptyLoaded) {
-                if (!emptyTexture.loadFromFile("../assets/textures/tileTexture.png")) {
-                    throw textureError("../assets/textures/tileTexture.png");
+                if (!emptyTexture.loadFromFile("../assets/textures/forestTexture.png")) {
+                    throw textureError("../assets/textures/forestTexture.png");
                 }
                 emptyLoaded = true;
             }

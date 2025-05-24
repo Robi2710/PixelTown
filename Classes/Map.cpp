@@ -6,7 +6,7 @@
 #include "PoliceDepartment.h"
 #include "Road.h"
 
-Map::Map() {
+Map::Map(int rows, int cols, float tileSize) : rows(rows), cols(cols), tileSize(tileSize) {
     for (int i = 0; i < rows; ++i) {
         std::vector<Tile> row;
         for (int j = 0; j < cols; ++j) {

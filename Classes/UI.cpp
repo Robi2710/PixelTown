@@ -29,6 +29,13 @@ void UI::update( int money, int materials) {
 }
 
 void UI::render(sf::RenderWindow& window) {
+    sf::RectangleShape menuBackground;
+    sf::Vector2f viewSize = window.getDefaultView().getSize();
+    menuBackground.setSize(sf::Vector2f(viewSize.x, 100.f));
+    menuBackground.setFillColor(sf::Color(50, 50, 50));
+    menuBackground.setPosition(0, viewSize.y - 100.f);
+    window.draw(menuBackground);
+
     for (auto& button : buttons) {
         window.draw(button);
     }
