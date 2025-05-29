@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <SFML/Graphics.hpp>
-#include "Classes/DefaultMap.h"
 #include "Classes/Resources.h"
 #include "Classes/City.h"
 #include "Classes/UI.h"

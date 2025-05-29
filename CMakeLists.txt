@@ -71,6 +71,7 @@ add_executable(${MAIN_EXECUTABLE_NAME}
     Classes/Exceptions.cpp
     Classes/PoliceDepartment.cpp
     Classes/DefaultMap.cpp
+    Classes/AssetsManager.cpp
     generated/src/Helper.cpp
 )
 
