@@ -5,6 +5,7 @@
 #include "House.h"
 #include "PoliceDepartment.h"
 #include "Road.h"
+#include "Tile.h"
 
 Map::Map(int rows, int cols, float tileSize) : rows(rows), cols(cols), tileSize(tileSize) {
     for (int i = 0; i < rows; ++i) {
@@ -15,6 +16,7 @@ Map::Map(int rows, int cols, float tileSize) : rows(rows), cols(cols), tileSize(
         grid.push_back(row);
     }
 }
+
 
 void Map::render(sf::RenderWindow& window) {
    for (auto& row : grid) {

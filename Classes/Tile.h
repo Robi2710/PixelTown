@@ -16,6 +16,11 @@ private:
     // static bool textureLoaded;
 public:
     Tile(float x, float y, float size);
+    Tile(TileType type,
+     float x, float y,
+     float size,
+     const sf::Texture& textureAtlas);
+
     void setType(TileType newType);
     TileType getType() const;
     void render(sf::RenderWindow& window);

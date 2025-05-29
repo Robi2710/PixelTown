@@ -5,13 +5,11 @@
 #include "Exceptions.h"
 
 Tile::Tile(float x, float y, float size) {
-    type = TileType::Empty;
     shape.setSize(sf::Vector2f(size , size ));
     shape.setPosition(x, y);
     shape.setFillColor(sf::Color::White);
     //setType(TileType::Empty);
 }
-
 
 void Tile::setType(TileType newType) {
     type = newType;
@@ -21,8 +19,8 @@ void Tile::setType(TileType newType) {
             static sf::Texture emptyTexture;
             static bool emptyLoaded = false;
             if (!emptyLoaded) {
-                if (!emptyTexture.loadFromFile("../assets/textures/forestTexture.png")) {
-                    throw textureError("../assets/textures/forestTexture.png");
+                if (!emptyTexture.loadFromFile("../assets/textures/grass.png")) {
+                    throw textureError("../assets/textures/grass.png");
                 }
                 emptyLoaded = true;
             }

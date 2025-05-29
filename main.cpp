@@ -26,18 +26,22 @@ int main() {
     Resources rm(1000, 500);
     City myCity(name, 0, rm);
     sf::RenderWindow window(sf::VideoMode(800,600), name);
-    sf::Texture tileSet;
-    if (!tileSet.loadFromFile("assets/textures/tileSet.png")) {
-        std::cerr << "Error loading tileset texture." << std::endl;
-        return 1;
-    }
-    //!!!Map map(defaultTileIndices,16.f, tileSet);
+    Map map;
     try {
         ui.initialize();
     } catch (const fontError& e) {
         std::cerr << "Font loading error: " << e.what() << std::endl;
         return 1;
     }
+    sf::Texture grassTexture;
+    if (!grassTexture.loadFromFile("../assets/textures/grass.png")) {
+        std::cerr << "Error loading grass texture" << std::endl;
+        return 1;
+    }
+
+    sf::Sprite grassSprite;
+    grassSprite.setTexture(grassTexture);
+
     sf::View view(window.getDefaultView());
     Factory f("factory", 100, 200, 100, "product", 10, 50, 30);
     Buildings* copy = f.clone();
@@ -75,7 +79,8 @@ int main() {
         }
         myCity.updateFactoriesHouse();
         ui.update(myCity.getResources().getMoney(), myCity.getResources().getMaterials());
-        window.clear(sf::Color(34, 139, 34));
+        window.clear();
+        window.draw(grassSprite);
         window.setView(view);
         map.render(window);
         window.setView(window.getDefaultView());

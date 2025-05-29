@@ -70,6 +70,7 @@ add_executable(${MAIN_EXECUTABLE_NAME}
     Classes/Road.cpp
     Classes/Exceptions.cpp
     Classes/PoliceDepartment.cpp
+    Classes/DefaultMap.cpp
     generated/src/Helper.cpp
 )
 

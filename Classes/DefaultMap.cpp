@@ -1,5 +1,5 @@
-//
-// Created by Roberto Baciu on 24.05.2025.
-//
-
 #include "DefaultMap.h"
+
+const std::vector<std::vector<int>>& DefaultMap::getTileIndices() const {
+    return defaultTileIndices;
+}
