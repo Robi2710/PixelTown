@@ -166,3 +166,14 @@ std::string UI::getCityName() {
     }
     return cityName;
 }
+
+void UI::setFont(sf::Font& font) {
+    this->font = font;
+
+    moneyText.setFont(font);
+    materialText.setFont(font);
+
+    for (auto& text : buttonTexts) {
+        text.setFont(font);
+    }
+}

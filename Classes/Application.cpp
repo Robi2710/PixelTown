@@ -1,6 +1,8 @@
 #include "Application.h"
 #include <iostream>
 #include <stdexcept>
+#include "AssetsManager.h"
+#include "BuildingFactory.h"
 
 Application::Application() : ui_(), resources_(1000,500), city_("", 0, resources_),
                             window_(sf::VideoMode(800,600), ""), view_(window_.getDefaultView()),
@@ -14,11 +16,21 @@ Application::Application() : ui_(), resources_(1000,500), city_("", 0, resources
 
     ui_.initialize();
 
-    if (!grassTexture_.loadFromFile("../assets/textures/grass.png")) {
-        throw std::runtime_error("Error loading grass texture");
-    }
-    grassSprite_.setTexture(grassTexture_);
+    sf::Font& mainFont = fontManager_.getResource("main", "../assets/fonts/PixelifySans-Regular.ttf");
+    ui_.setFont(mainFont);
 
+    sf::SoundBuffer& buildBuffer = soundBufferManager_.getResource("build", "../assets/sounds/placeSound.mp3");
+    buildSound_.setBuffer(buildBuffer);
+    buildSound_.setVolume(100);
+
+    sf::Texture& grassTexture = AssetsManager::getInstance().getTexture("../assets/textures/grass.png");
+    grassSprite_.setTexture(grassTexture);
+
+    map_.setApplication(this);
+}
+
+sf::Sound& Application::getBuildSound() {
+    return buildSound_;
 }
 
 int Application::run() {
@@ -27,6 +39,11 @@ int Application::run() {
         update();
         render();
     }
+
+    //clean up
+    AssetsManager::getInstance().cleanup();
+    fontManager_.clear();
+    //soundManager_.clear();
     return 0;
 }
 

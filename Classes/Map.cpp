@@ -6,7 +6,8 @@
 #include "PoliceDepartment.h"
 #include "Road.h"
 #include "Tile.h"
-
+#include "BuildingFactory.h"
+#include "Application.h"
 Map::Map(int rows, int cols, float tileSize) : rows(rows), cols(cols), tileSize(tileSize) {
     for (int i = 0; i < rows; ++i) {
         std::vector<Tile> row;
@@ -31,34 +32,18 @@ void Map::handleClick(float x, float y, TileType selectedTileType, City* city) {
     int col = static_cast<int>(x / tileSize);
 
     if (row >= 0 && row < rows && col >= 0 && col < cols) {
-      TileType current = grid[row][col].getType();
-      if (current == TileType::Empty) {
-        if (selectedTileType == TileType::Factory) {
-            Buildings* newBuilding = new Factory("factory", 100, 200, 100, "product", 10,50, 30);
-            if (city->addBuilding(newBuilding)) {
+        TileType current = grid[row][col].getType();
+        if (current == TileType::Empty && selectedTileType != TileType::Empty) {
+            Buildings* newBuilding = BuildingFactory::createBuilding(selectedTileType);
+
+            if (newBuilding && city->addBuilding(newBuilding)) {
                 grid[row][col].setType(selectedTileType);
-                std::cout<<"A factory was built";
-            }
-        } else if (selectedTileType == TileType::House) {
-            Buildings* newBuilding = new House("house", 10, 100, 50, 20);
-            if (city->addBuilding(newBuilding)) {
-                grid[row][col].setType(selectedTileType);
-                std::cout<<"A house was built";
-            }
-        } else if (selectedTileType == TileType::Road) {
-            Buildings* newBuilding = new Road("road", 0, 50, 25);
-            if (city->addBuilding(newBuilding)) {
-                grid[row][col].setType(selectedTileType);
-                std::cout<<"A road was built";
-            }
-        } else if (selectedTileType == TileType::PoliceDepartment) {
-            Buildings* newBuilding = new PoliceDepartment("policeDepartment", 100, 200, 100);
-            if (city-> addBuilding(newBuilding)) {
-                grid[row][col].setType(selectedTileType);
-                std::cout<<"A police department was built";
+
+                if (app) {
+                    app->getBuildSound().play();
+                }
+                std::cout << "A " << newBuilding->getType() << " was built" << std::endl;
             }
         }
-
-      }
     }
 }

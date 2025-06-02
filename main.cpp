@@ -24,3 +24,6 @@ int main() {
 
     return 0;
 }
+
+//design paterns: assetsmanger.cpp
+//                buildingfactory.cpp -> Map.cpp(handleclick)

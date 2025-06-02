@@ -9,10 +9,8 @@
 #include "Exceptions.h"
 #include "Map.h"
 #include <string>
-
-#include "City.h"
-#include "Resources.h"
-
+#include "ResourceManager.h"
+#include <SFML/Audio.hpp>
 class Application {
 private:
     void processEvents();
@@ -28,10 +26,14 @@ private:
     sf::Sprite grassSprite_;
     sf::View view_;
     Factory factory_;
+
+    ResourceManager<sf::Font> fontManager_;
+    ResourceManager<sf::SoundBuffer> soundBufferManager_;
+    sf::Sound buildSound_; // Sound object that will use the buffer
 public:
     Application();
     int run();
-
+    sf::Sound& getBuildSound();
 };
 
 

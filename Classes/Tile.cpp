@@ -42,7 +42,7 @@ void Tile::setType(TileType newType) {
                 break;
         }
 
-        sf::Texture& texture = AssetsManager::getTexture(texturePath);
+        sf::Texture& texture = AssetsManager::getInstance().getTexture(texturePath);
         shape.setTexture(&texture);
 
         sf::Vector2u texSize = texture.getSize();
