@@ -1,4 +1,4 @@
-"#!/usr/bin/bash
+#!/usr/bin/bash
 
 cppcheck --enable=all \
     --inline-suppr \
@@ -9,4 +9,3 @@ cppcheck --enable=all \
     --suppress=missingIncludeSystem \
     --suppress=unmatchedSuppression \
     --suppress=useStlAlgorithm
-"

@@ -2,7 +2,6 @@
 #include <iostream>
 #include <stdexcept>
 #include "AssetsManager.h"
-#include "BuildingFactory.h"
 
 Application::Application() : ui_(), resources_(1000,500), city_("", 0, resources_),
                             window_(sf::VideoMode(800,600), ""), view_(window_.getDefaultView()),
