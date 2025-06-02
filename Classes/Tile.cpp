@@ -46,7 +46,7 @@ void Tile::setType(TileType newType) {
         shape.setTexture(&texture);
 
         sf::Vector2u texSize = texture.getSize();
-        sf::Vector2f shapeSize = shape.getSize();
+        //sf::Vector2f shapeSize = shape.getSize();
 
         shape.setTextureRect(sf::IntRect(0, 0, texSize.x, texSize.y));
 
