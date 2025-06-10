@@ -3,7 +3,7 @@
 
 #include "Buildings.h"
 #include "TileType.h"
-
+#include <memory>
 class BuildingFactory {
 public:
   static std::unique_ptr<Buildings> createBuilding(TileType type);
