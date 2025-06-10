@@ -31,6 +31,7 @@ void Factory::updateBuilding(Resources& resources) {
               << ", Production Rate: " << productionRate << " units/month" << std::endl;
 }*/
 
+// cppcheck-suppress unusedFunction
 [[maybe_unused]] Buildings* Factory::clone() const {
     return new Factory(*this);
 }
