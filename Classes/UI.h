@@ -19,7 +19,7 @@ public:
     void handleMouseClick(int mouseX, int mouseY);
     TileType getSelectedTileType();
     static std::string getCityName();
-    void setFont(sf::Font& font);
+    void setFont(const sf::Font& font);
 };
 
 
