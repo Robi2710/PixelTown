@@ -78,7 +78,7 @@ bool City::addBuilding(std::unique_ptr<Buildings> building) {
 }
 
 void City::updateFactoriesHouse() {
-  for (std::unique_ptr<Buildings>& building : buildings) {
+  for (const std::unique_ptr<Buildings>& building : buildings) {
     if (Factory *factory = dynamic_cast<Factory *>(building.get())) {
       factory->updateBuilding(resources);
     }
