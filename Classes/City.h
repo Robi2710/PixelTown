@@ -8,10 +8,10 @@
 
 class City {
 private:
-  std::string name;
-  int population;
-  Resources resources;
-  std::vector<std::unique_ptr<Buildings> > buildings;
+  std::string name{};
+  int population{0};
+  Resources resources{};
+  std::vector<std::unique_ptr<Buildings> > buildings{};
 
   int totalMaintenance() const;
 

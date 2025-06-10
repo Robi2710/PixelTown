@@ -4,8 +4,8 @@
 #include <iostream>
 class Resources {
 private:
-  int money;
-  int materials;
+  int money{0};
+  int materials{0};
 
 public:
   explicit Resources(int money = 10000, int materials = 0);

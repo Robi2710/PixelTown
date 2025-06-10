@@ -6,18 +6,18 @@
 
 class Buildings {
 private:
-  std::string type;
-  int capacity;
-  int costMoney;
-  int costMaterials;
+  std::string type{};
+  int capacity{0};
+  int costMoney{0};
+  int costMaterials{0};
 
   // int maintenance() const;
 public:
   Buildings(const std::string &type, int capacity, int costMoney,
             int costMaterials);
-  Buildings(const Buildings &other);
+  Buildings(const Buildings &) = default;
   Buildings &operator=(const Buildings &other);
-  virtual ~Buildings();
+  virtual ~Buildings() = default;
 
   // virtual int calculateMaintenance() const = 0;
   virtual void updateBuilding(Resources &resources) = 0;

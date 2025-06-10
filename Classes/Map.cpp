@@ -24,7 +24,7 @@ void Map::render(sf::RenderWindow &window) {
 }
 
 void Map::handleClick(float x, float y, TileType selectedTileType, City *city) {
-  std::cout << "handleClick called at x=" << x << ", y=" << y << std::endl;
+  // std::cout << "handleClick called at x=" << x << ", y=" << y << std::endl;
   int row = static_cast<int>(y / tileSize);
   int col = static_cast<int>(x / tileSize);
 
@@ -34,9 +34,8 @@ void Map::handleClick(float x, float y, TileType selectedTileType, City *city) {
       std::unique_ptr<Buildings> newBuilding(BuildingFactory::createBuilding(selectedTileType));
 
       if (newBuilding) {
-        std::string buildingType = newBuilding->getType();  // salvează tipul
+        std::string buildingType = newBuilding->getType();
 
-        // mută ownership-ul O SINGURĂ DATĂ
         if (city->addBuilding(std::move(newBuilding))) {
           grid[row][col].setType(selectedTileType);
 

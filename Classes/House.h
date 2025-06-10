@@ -5,9 +5,9 @@
 #include <chrono>
 class House : public Buildings {
 private:
-  int maintenanceCost;
+  int maintenanceCost{0};
   std::chrono::steady_clock::time_point lastMaintenaceTime;
-  float satisfaction;
+  float satisfaction{0};
 
 public:
   House(const std::string &type, int capacity, int costMoney, int costMaterials,

@@ -5,9 +5,9 @@ Buildings::Buildings(const std::string &type, int capacity, int costMoney,
     : type(type), capacity(capacity), costMoney(costMoney),
       costMaterials(costMaterials) {}
 
-Buildings::Buildings(const Buildings &other)
-    : type(other.type), capacity(other.capacity), costMoney(other.costMoney),
-      costMaterials(other.costMaterials) {}
+// Buildings::Buildings(const Buildings &other)
+//     : type(other.type), capacity(other.capacity), costMoney(other.costMoney),
+//       costMaterials(other.costMaterials) {}
 
 Buildings &Buildings::operator=(const Buildings &other) {
   if (this != &other) {
@@ -20,7 +20,7 @@ Buildings &Buildings::operator=(const Buildings &other) {
   return *this;
 }
 
-Buildings::~Buildings() {}
+
 
 /*int Buildings::maintenance() const {
     return (capacity * 5) + (costMoney / 10);

@@ -6,10 +6,10 @@
 #include <string>
 class Factory : public Buildings {
 private:
-  std::string product;
-  int productionRate;
-  int materialGenerationRate;
-  int generationInterval;
+  std::string product{};
+  int productionRate{0};
+  int materialGenerationRate{0};
+  int generationInterval{0};
   std::chrono::system_clock::time_point lastProductionTime;
 
 public:

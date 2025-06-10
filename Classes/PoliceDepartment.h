@@ -11,7 +11,7 @@ class PoliceDepartment : public Buildings {
 private:
   const int radius = 4;
   const float satisfactionIncrease = 0.1f;
-  std::vector<Buildings *> *cityBuildings;
+  std::vector<Buildings *> *cityBuildings{};
 
 public:
   PoliceDepartment(const std::string &type, int capacity, int costMoney,
