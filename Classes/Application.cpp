@@ -4,8 +4,8 @@
 #include "AssetsManager.h"
 
 Application::Application() : ui_(), resources_(1000,500), city_("", 0, resources_),
-                            window_(sf::VideoMode(800,600), ""), view_(window_.getDefaultView()),
-                            map_(), factory_("factory", 100, 200, 100, "product", 10,50,30) {
+                            window_(sf::VideoMode(800,600), ""), map_(), view_(window_.getDefaultView()),
+                             factory_("factory", 100, 200, 100, "product", 10,50,30) {
     std::string name = ui_.getCityName();
     if (name.empty()) {
         throw std::runtime_error("No city name provided. Exiting.");

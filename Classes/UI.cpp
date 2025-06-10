@@ -167,8 +167,8 @@ std::string UI::getCityName() {
     return cityName;
 }
 
-void UI::setFont(sf::Font& font) {
-    this->font = font;
+void UI::setFont(sf::Font& newFont) {
+    this->font = newFont;
 
     moneyText.setFont(font);
     materialText.setFont(font);

@@ -24,5 +24,5 @@ int main() {
 
 }
 
-//design paterns: assetsmanger.cpp
-//                buildingfactory.cpp -> Map.cpp(handleclick)
+//design paterns: assetsmanger.cpp -> tile.cpp singleton
+//                buildingfactory.cpp -> Map.cpp(handleclick) factory

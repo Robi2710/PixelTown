@@ -29,7 +29,7 @@ private:
 
     ResourceManager<sf::Font> fontManager_;
     ResourceManager<sf::SoundBuffer> soundBufferManager_;
-    sf::Sound buildSound_; // Sound object that will use the buffer
+    sf::Sound buildSound_;
 public:
     Application();
     int run();

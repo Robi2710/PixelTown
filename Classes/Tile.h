@@ -1,7 +1,3 @@
-//
-// Created by Roberto Baciu on 22.04.2025.
-//
-
 #ifndef TILE_H
 #define TILE_H
 
