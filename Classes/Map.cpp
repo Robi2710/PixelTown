@@ -8,7 +8,7 @@
 #include "Tile.h"
 #include "BuildingFactory.h"
 #include "Application.h"
-Map::Map(int rows, int cols, float tileSize) : rows(rows), cols(cols), tileSize(tileSize) {
+Map::Map(int rows, int cols, float tileSize) : rows(rows), cols(cols), tileSize(tileSize), app(nullptr) {
     for (int i = 0; i < rows; ++i) {
         std::vector<Tile> row;
         for (int j = 0; j < cols; ++j) {

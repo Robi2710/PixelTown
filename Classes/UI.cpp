@@ -166,7 +166,6 @@ std::string UI::getCityName() {
     }
     return cityName;
 }
-
 void UI::setFont(sf::Font& newFont) {
     this->font = newFont;
 
