@@ -7,19 +7,18 @@
 
 class AssetsManager {
 public:
-    static AssetsManager& getInstance();
-    static sf::Texture& getTexture(const std::string& filename);
-    void cleanup();
+  static AssetsManager &getInstance();
+  static sf::Texture &getTexture(const std::string &filename);
+  void cleanup();
+
 private:
-    static AssetsManager* instance;
-    static std::map<std::string, sf::Texture> textures;
+  static AssetsManager *instance;
+  static std::map<std::string, sf::Texture> textures;
 
-    AssetsManager() = default;
+  AssetsManager() = default;
 
-    AssetsManager(const AssetsManager&) = delete;
-    AssetsManager& operator=(const AssetsManager&) = delete;
+  AssetsManager(const AssetsManager &) = delete;
+  AssetsManager &operator=(const AssetsManager &) = delete;
 };
 
-
-
-#endif //ASSETSMANAGER_H
+#endif // ASSETSMANAGER_H

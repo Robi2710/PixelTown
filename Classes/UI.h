@@ -1,9 +1,9 @@
 #ifndef UI_H
 #define UI_H
 
-#include <SFML/Graphics.hpp>
-#include "TileType.h"
 #include "City.h"
+#include "TileType.h"
+#include <SFML/Graphics.hpp>
 class UI {
 private:
   sf::Font font;
@@ -11,17 +11,16 @@ private:
   std::vector<sf::RectangleShape> buttons;
   TileType selectedTileType;
   std::vector<sf::Text> buttonTexts;
+
 public:
-    UI();
-    void update( int money, int materials);
-    void render(sf::RenderWindow& window);
-    void initialize();
-    void handleMouseClick(int mouseX, int mouseY);
-    TileType getSelectedTileType();
-    static std::string getCityName();
-    void setFont(const sf::Font& font);
+  UI();
+  void update(int money, int materials);
+  void render(sf::RenderWindow &window);
+  void initialize();
+  void handleMouseClick(int mouseX, int mouseY);
+  TileType getSelectedTileType();
+  static std::string getCityName();
+  void setFont(const sf::Font &font);
 };
 
-
-
-#endif //UI_H
+#endif // UI_H

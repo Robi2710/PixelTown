@@ -1,11 +1,11 @@
 #ifndef MAP_H
 #define MAP_H
 
-#include <vector>
-#include <SFML/Graphics.hpp>
+#include "City.h"
 #include "Tile.h"
 #include "TileType.h"
-#include "City.h"
+#include <SFML/Graphics.hpp>
+#include <vector>
 
 class Application;
 class Map {
@@ -14,14 +14,13 @@ private:
   const int rows = 10;
   const int cols = 16;
   const float tileSize = 50.f;
-  Application* app;
+  Application *app;
+
 public:
   explicit Map(int rows = 50, int cols = 50, float tileSize = 32.f);
-  void render(sf::RenderWindow& window);
-  void handleClick(float x, float y, TileType selectedTileType,City* city);
-  void setApplication(Application* application) { app = application; }
+  void render(sf::RenderWindow &window);
+  void handleClick(float x, float y, TileType selectedTileType, City *city);
+  void setApplication(Application *application) { app = application; }
 };
 
-
-
-#endif //MAP_H
+#endif // MAP_H

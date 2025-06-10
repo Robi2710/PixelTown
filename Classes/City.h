@@ -1,36 +1,37 @@
 #ifndef CITY_H
 #define CITY_H
 
-#include <iostream>
-#include <vector>
 #include "Buildings.h"
 #include "Resources.h"
+#include <iostream>
+#include <vector>
 
 class City {
 private:
-    std::string name;
-    int population;
-    Resources resources;
-    std::vector<Buildings*> buildings;
+  std::string name;
+  int population;
+  Resources resources;
+  std::vector<std::unique_ptr<Buildings> > buildings;
 
-    int totalMaintenance() const;
+  int totalMaintenance() const;
 
-    void checkCityStatus() const;
+  void checkCityStatus() const;
 
 public:
-    explicit City(const std::string& name, int population=0, const Resources& resources= Resources());
+  explicit City(const std::string &name, int population = 0,
+                const Resources &resources = Resources());
 
-    ~City();
+  // ~City();
 
-    Resources& getResources();
+  Resources &getResources();
 
-    const std::vector<Buildings*>& getBuildings() const;
+  const std::vector<Buildings *> &getBuildings() const;
 
-    bool addBuilding(Buildings* building);
+  bool addBuilding(std::unique_ptr<Buildings> building);
 
-    void updateFactoriesHouse();
+  void updateFactoriesHouse();
 
-    friend std::ostream& operator<<(std::ostream& os, const City& city);
+  friend std::ostream &operator<<(std::ostream &os, const City &city);
 };
 
-#endif //CITY_H
+#endif // CITY_H

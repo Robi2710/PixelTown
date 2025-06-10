@@ -1,11 +1,9 @@
 #ifndef OOP_HELPER_H
 #define OOP_HELPER_H
 
-
 class Helper {
 public:
-    void help();
+  void help();
 };
 
-
-#endif //OOP_HELPER_H
+#endif // OOP_HELPER_H

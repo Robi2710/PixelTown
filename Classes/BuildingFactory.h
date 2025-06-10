@@ -6,9 +6,7 @@
 
 class BuildingFactory {
 public:
-    static Buildings* createBuilding(TileType type);
+  static std::unique_ptr<Buildings> createBuilding(TileType type);
 };
 
-
-
-#endif //BUILDINGFACTORY_H
+#endif // BUILDINGFACTORY_H
