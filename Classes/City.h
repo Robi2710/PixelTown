@@ -5,6 +5,7 @@
 #include "Resources.h"
 #include <iostream>
 #include <vector>
+#include <memory>
 
 class City {
 private:
