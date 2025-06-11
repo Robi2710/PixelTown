@@ -7,33 +7,36 @@ runs:
     - name: Set Tag Name
       shell: bash
       if: startsWith(github.ref, 'refs/tags/')
-      # trim prefix from ref to get tag name
-      # replace `/` since we use the tag name as part of a file name
-      run: echo "TAG_NAME=$(echo ${GITHUB_REF#'refs/tags/'} | sed "s|/|_|g")" >> ${GITHUB_ENV}
+      run: |
+        TAG_NAME=$(echo "${GITHUB_REF#refs/tags/}" | sed 's|/|_|g')
+        echo "TAG_NAME=${TAG_NAME}" >> $GITHUB_ENV
 
-    - name: Add tag to folder name
+    - name: Set Final Archive Name
       shell: bash
       if: startsWith(github.ref, 'refs/tags/')
       run: |
-        mv ${{ env.ZIP_NAME }} ${{ env.ZIP_NAME }}_${{ env.TAG_NAME }}
+        FINAL_NAME="${ZIP_NAME}_${TAG_NAME}_${TIMESTAMP}"
+        echo "FINAL_ARCHIVE_NAME=${FINAL_NAME}" >> $GITHUB_ENV
+        mv "${ZIP_NAME}" "${FINAL_NAME}"
+        echo "Folder renamed to ${FINAL_NAME}"
+        ls -la "${FINAL_NAME}"
 
     - name: Archive Release
-      uses: thedoctor0/zip-release@master
+      shell: bash
       if: startsWith(github.ref, 'refs/tags/')
-      with:
-        type: 'zip'
-        path: ${{ env.ZIP_NAME }}_${{ env.TAG_NAME }}
-        filename: ${{ env.ZIP_NAME }}_${{ env.TAG_NAME }}.zip
+      run: |
+        zip -r "${FINAL_ARCHIVE_NAME}.zip" "${FINAL_ARCHIVE_NAME}"
+        echo "ZIP created: ${FINAL_ARCHIVE_NAME}.zip"
+        ls -lh "${FINAL_ARCHIVE_NAME}.zip"
 
     - name: Generate artifact attestation
-      uses: actions/attest-build-provenance@v1
       if: startsWith(github.ref, 'refs/tags/')
+      uses: actions/attest-build-provenance@v1
       with:
-        subject-path: ${{ env.ZIP_NAME }}_${{ env.TAG_NAME }}.zip
+        subject-path: ${{ env.FINAL_ARCHIVE_NAME }}.zip
 
     - name: Release
-      uses: softprops/action-gh-release@v2
       if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v2
       with:
-        files: |
-          ${{ env.ZIP_NAME }}_${{ env.TAG_NAME }}.zip
+        files: ${{ env.FINAL_ARCHIVE_NAME }}.zip
